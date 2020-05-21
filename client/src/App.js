@@ -11,32 +11,39 @@ import CreateTier from './components/CreateTier.js'
 function App() {
   return (
     <div className="App">
-      <navbar className='navbar'>
-        <div className='logo'>
-          <img className='logo-img' src='/img/meleehell.png' alt=''/>
-        </div>
-        <nav>
-          <a className='nav-link' href='/'>Home</a>
-          <a className='nav-link' href='/all-characters'>All Characters</a>
-        </nav>
-      </navbar>
+
       <Router>
+        <navbar className='navbar'>
+          <div className='logo'>
+            <img className='logo-img' src='/img/meleehell.png' alt='' />
+          </div>
+          <nav>
+            <Link className='nav-link' to='/'>Home</Link>
+            <Link className='nav-link' to='/all-characters'>All Characters</Link>
+          </nav>
+        </navbar>
+        <div className='content'>
+          <div className='spacer'></div>
         <Switch>
           <Route exact path="/">
-            <TierList/>
+            <TierList />
           </Route>
-          <Route exact path="/all-characters" component={Characters}/>
+          <Route exact path="/all-characters" component={Characters} />
           <Route exact path="/character/:characterId" component={SingleCharacter} />
           <Route exact path="/create-tier" component={CreateTier} />
 
         </Switch>
-      </Router>
-      <div className='footer'>
+        </div>
+        
+        <div className='footer'>
           <div className='bottom-nav'>
             <a className='bottom-nav-link' href=''>Git Hub</a>
           </div>
-      </div>
+        </div>
+
+      </Router>
     </div>
+
   );
 }
 
