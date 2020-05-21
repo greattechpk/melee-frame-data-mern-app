@@ -103,7 +103,7 @@ export default class Characters extends Component {
                     return (
                         <div>
                             <Link to={`/character/${character._id}`}>
-                                <img src={character.portrait} />
+                                <img className='char-portrait' src={character.portrait} alt={`${character.name}-melee-smash-bros`}/>
                                 <div>{character.name}</div>
                             </Link>
                     <div>Tier: {character.tierLetter}</div>

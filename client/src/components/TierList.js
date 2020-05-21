@@ -5,20 +5,19 @@ import axios from 'axios'
 export default class TierList extends Component {
 
     state = {
-        newTier: '',
         allTiers: []
     }
+
     componentDidMount() {
         this.getAllTiers()
     }
 
     getAllTiers = async () => {
         try {
-            const res = await axios.get('api/tier')
+            const res = await axios.get('/api/tier')
             const newState = { ...this.state }
             newState.allTiers = res.data
             this.setState(newState)
-            console.log(this.state.allTiers)
         } catch (err) {
             console.log('Failed to get all tiers')
             console.log(err)
@@ -50,10 +49,16 @@ export default class TierList extends Component {
     render() {
         return (
             <div className='tier-list'>
+                <Link to={`/create-tier`}>
+
+                </Link>
                 {this.state.allTiers.map((tier) => {
                     return(
                         <div className='tier'>
-                            <div className></div>
+                            <div className='tier-letter'>{tier.tierLetter}</div>
+                            <div className='tier-characters'>
+                                Characters will go here.
+                            </div>
                         </div>
                     )
                 })}

@@ -13,7 +13,7 @@ const mongoose = require('./connection.js')
  */
 
 const TierSchema = new mongoose.Schema({
-    letter: String
+    tierLetter: String
 })
 
 const TierModel = mongoose.model('tier', TierSchema)
