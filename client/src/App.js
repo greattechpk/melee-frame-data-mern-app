@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './App.css'
 import Characters from './components/Characters.js'
 import SingleCharacter from './components/SingleCharacter.js'
@@ -12,8 +13,12 @@ function App() {
     <div className="App">
       <navbar className='navbar'>
         <div className='logo'>
-          <img src='' alt=''/>
+          <img className='logo-img' src='/img/meleehell.png' alt=''/>
         </div>
+        <nav>
+          <a className='nav-link' href='/'>Home</a>
+          <a className='nav-link' href='/all-characters'>All Characters</a>
+        </nav>
       </navbar>
       <Router>
         <Switch>
@@ -26,6 +31,11 @@ function App() {
 
         </Switch>
       </Router>
+      <div className='footer'>
+          <div className='bottom-nav'>
+            <a className='bottom-nav-link' href=''>Git Hub</a>
+          </div>
+      </div>
     </div>
   );
 }
