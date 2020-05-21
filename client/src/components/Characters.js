@@ -7,6 +7,8 @@ export default class Characters extends Component {
     state = {
         newCharacter: {
             name: '',
+            portrait:'',
+            tierLetter:'',
             description: ''
         },
         allCharacters: []

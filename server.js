@@ -1,6 +1,7 @@
 
 const express = require('express')
 const characterRouter = require('./controllers/character')
+const tierRouter = require('./controllers/tier')
 const app = express()
 
 
@@ -12,6 +13,7 @@ app.use(express.json())
 app.use(express.static(`${__dirname}/client/build`))
 
 app.use('/api/character', characterRouter)
+app.use('/api/tier', tierRouter)
 
 app.get('/*', (req, res) => {
     res.sendFile(`${__dirname}/client/build/index.html`)

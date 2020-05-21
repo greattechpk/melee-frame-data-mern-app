@@ -14,6 +14,8 @@ const mongoose = require('./connection.js')
 
 const CharacterSchema = new mongoose.Schema({
     name: String,
+    portrait: String,    
+    tierLetter: String,
     description: String
 })
 
