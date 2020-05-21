@@ -69,6 +69,24 @@ export default class Characters extends Component {
                     </div>
 
                     <div>
+                        <label htmlFor="portrait">Portrait</label>
+                        <input
+                            type="text"
+                            name="portrait"
+                            value={this.state.newCharacter.portrait}
+                            onChange={this.onChangeCharacter} />
+                    </div>
+
+                    <div>
+                        <label htmlFor="tierLetter">Tier Letter</label>
+                        <input
+                            type="text"
+                            name="tierLetter"
+                            value={this.state.newCharacter.tierLetter}
+                            onChange={this.onChangeCharacter} />
+                    </div>
+
+                    <div>
                         <label htmlFor="description">Description</label>
                         <input
                             type="text"
@@ -85,8 +103,10 @@ export default class Characters extends Component {
                     return (
                         <div>
                             <Link to={`/character/${character._id}`}>
+                                <img src={character.portrait} />
                                 <div>{character.name}</div>
                             </Link>
+                    <div>Tier: {character.tierLetter}</div>
                             <div>{character.description}</div>
                             <button onClick={() => this.onDeleteCharacter(character._id)}>Delete</button>
                         </div>
