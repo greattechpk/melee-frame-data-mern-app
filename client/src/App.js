@@ -5,6 +5,7 @@ import './App.css'
 import Characters from './components/Characters.js'
 import SingleCharacter from './components/SingleCharacter.js'
 import TierList from './components/TierList'
+import CreateCharacter from './components/CreateCharacter'
 
 import CreateTier from './components/CreateTier.js'
 
@@ -31,6 +32,7 @@ function App() {
           <Route exact path="/all-characters" component={Characters} />
           <Route exact path="/character/:characterId" component={SingleCharacter} />
           <Route exact path="/create-tier" component={CreateTier} />
+          <Route exact path="/create-character" component={CreateCharacter}/>
 
         </Switch>
         </div>
