@@ -10,6 +10,7 @@ import AdminCharacters from './components/AdminCharacters'
 
 import CreateTier from './components/CreateTier.js'
 import AdminSingleCharacter from './components/AdminSingleCharacter'
+import AdminTierList from './components/AdminTierList'
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route exact path="/all-characters" component={Characters} />
           <Route exact path="/character/:characterId" component={SingleCharacter} />
           <Route exact path="/admin-create-tier" component={CreateTier} />
+          <Route exact path="/admin-tier-list" component={AdminTierList} />
           <Route exact path="/admin-create-character" component={CreateCharacter}/>
           <Route exact path="/admin-characters" component={AdminCharacters}/>
           <Route exact path="/admin-character/:characterId" component={AdminSingleCharacter}/>

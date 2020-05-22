@@ -9,7 +9,23 @@ export default class CreateCharacter extends Component {
             name: '',
             portrait:'',
             tierLetter:'',
-            description: ''
+            description: '',
+            tierID:''
+        },
+        tiers:[]
+    }
+
+    getTierInfo = async () =>{
+        try{
+            const res = await axios.get('api/tier')
+            const newState = {...this.state}
+            console.log(res.data)
+            newState.tiers = res.data
+            console.log(newState.tiers)
+            this.setState(newState)
+        } catch (err){
+            console.log('Failed to get tier data')
+            console.log(err)
         }
     }
 
