@@ -9,24 +9,33 @@ export default class CreateCharacter extends Component {
             name: '',
             portrait:'',
             tierLetter:'',
-            description: '',
-            tierID:''
+            description: ''
         },
         tiers:[]
+    }
+
+    componentDidMount(){
+        this.getTierInfo()
     }
 
     getTierInfo = async () =>{
         try{
             const res = await axios.get('api/tier')
             const newState = {...this.state}
-            console.log(res.data)
             newState.tiers = res.data
-            console.log(newState.tiers)
+            console.log(newState)
             this.setState(newState)
         } catch (err){
             console.log('Failed to get tier data')
             console.log(err)
         }
+    }
+
+    onSelectTier = (evt) => {
+        const newState = {...this.state}
+        newState.tierLetter = evt.target.value
+        this.setState(newState)
+        console.log(evt.target.value)
     }
 
     onChangeCharacter = (evt) => {
@@ -54,7 +63,7 @@ export default class CreateCharacter extends Component {
         }
         return (
             <div>
-                <h1>Create a Character</h1>
+                <h1>(Admin)Create a Character</h1>
                 <form onSubmit={this.onSubmit}>
                     <div>
                         <label htmlFor="name">Name</label>
@@ -76,11 +85,11 @@ export default class CreateCharacter extends Component {
 
                     <div>
                         <label htmlFor="tierLetter">Tier Letter</label>
-                        <input
-                            type="text"
-                            name="tierLetter"
-                            value={this.state.newCharacter.tierLetter}
-                            onChange={this.onChangeCharacter} />
+                        <select name='tier' id='tier' onChange={this.onSelectTier} value={this.state.tierLetter}>
+                            {this.state.tiers.map((entry)=>{
+                               return(<option value={entry.tierLetter}>{entry.tierLetter}</option>) 
+                            })}
+                        </select>
                     </div>
 
                     <div>

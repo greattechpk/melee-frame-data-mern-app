@@ -16,8 +16,7 @@ const CharacterSchema = new mongoose.Schema({
     name: String,
     portrait: String,    
     tierLetter: String,
-    description: String,
-    tierID:String
+    description: String
 })
 
 const CharacterModel = mongoose.model('character', CharacterSchema)
