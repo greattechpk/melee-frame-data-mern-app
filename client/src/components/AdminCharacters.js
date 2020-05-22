@@ -25,10 +25,6 @@ export default class AdminCharacters extends Component {
         }
     }
 
-    onDeleteCharacter = async (characterId) => {
-        await axios.delete(`api/character/${characterId}`)
-        this.getAllCharacters()
-    }
 
 
 
@@ -36,19 +32,18 @@ export default class AdminCharacters extends Component {
     render() {
         return (
             <div>
-                <h1>All Characters</h1>
+                <h1>(Admin) All Characters</h1>
                 {this.state.allCharacters.map((character) => {
 
                     return (
                         <div>
-                            <Link to={`/character/${character._id}`}>
+                            <Link to={`/admin-character/${character._id}`}>
                                 <img className='char-portrait' src={character.portrait} alt={`${character.name}-melee-smash-bros`} />
                                 <div>{character.name}</div>
                             </Link>
                             <div>Tier: {character.tierLetter}</div>
                             <div>{character.description}</div>
-                            <button onClick={() => this.onDeleteCharacter(character._id)}>Delete</button>
-                        </div>
+                           </div>
                     )
                 })}
             </div>

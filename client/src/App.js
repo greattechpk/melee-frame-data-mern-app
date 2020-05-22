@@ -9,13 +9,14 @@ import CreateCharacter from './components/CreateCharacter'
 import AdminCharacters from './components/AdminCharacters'
 
 import CreateTier from './components/CreateTier.js'
+import AdminSingleCharacter from './components/AdminSingleCharacter'
 
 function App() {
   return (
     <div className="App">
 
       <Router>
-        <navbar className='navbar'>
+        <div className='navbar'>
           <div className='logo'>
             <img className='logo-img' src='/img/meleehell.png' alt='' />
           </div>
@@ -23,7 +24,7 @@ function App() {
             <Link className='nav-link' to='/'>Home</Link>
             <Link className='nav-link' to='/all-characters'>All Characters</Link>
           </nav>
-        </navbar>
+        </div>
         <div className='content'>
           <div className='spacer'></div>
         <Switch>
@@ -35,6 +36,7 @@ function App() {
           <Route exact path="/admin-create-tier" component={CreateTier} />
           <Route exact path="/admin-create-character" component={CreateCharacter}/>
           <Route exact path="/admin-characters" component={AdminCharacters}/>
+          <Route exact path="/admin-character/:characterId" component={AdminSingleCharacter}/>
 
 
         </Switch>
@@ -42,7 +44,7 @@ function App() {
         
         <div className='footer'>
           <div className='bottom-nav'>
-            <a className='bottom-nav-link' href=''>Git Hub</a>
+            <a className='bottom-nav-link' href='https://github.com/greattechpk'>Git Hub</a>
           </div>
         </div>
 

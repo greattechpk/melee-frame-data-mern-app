@@ -22,6 +22,14 @@ export default class editCharacter extends Component {
                             value={this.props.description}
                             onChange={this.props.onChangeCharacter} />
                     </div>
+                    <div>
+                        <label htmlFor="portrait">Portrait</label>
+                        <input
+                            type="text"
+                            name="portrait"
+                            value={this.props.portrait}
+                            onChange={this.props.onChangeCharacter} />
+                    </div>
                 </form>
             </div>
         )
