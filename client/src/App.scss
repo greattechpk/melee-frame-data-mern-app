@@ -1,70 +1,71 @@
-body{
+body {
   background-image: url(/img/meleebckgrnd.png);
   background-size: cover;
 }
 .App {
   text-align: center;
-  margin:0;
+  margin: 0;
 }
 
-.content{
+a{
+  outline: 0;
+}
+
+.content {
   margin: 0 auto;
   width: 80%;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 0 0 0 0;
   min-height: 100vh;
 }
 
-.spacer{
+.spacer {
   width: 100%;
   height: 80px;
 }
 
-.navbar{
+.navbar {
   background-color: #333;
   display: block;
   display: flex;
   flex-direction: row;
-  position:fixed;
-  top:0;
+  position: fixed;
+  top: 0;
   width: 100%;
   align-items: center;
   justify-content: space-between;
 }
-nav{
+nav {
   display: flex;
   height: 100%;
 }
 
-.nav-link{
+.nav-link {
   text-decoration: none;
   color: beige;
   padding: 15px;
+  &:hover {
+    background-color: black;
+    color: red;
+  }
 }
 
-.nav-link:hover{
-  background-color: black;
-  color: red;
-}
-
-.logo-img{
-  max-width:300px;
+.logo-img {
+  max-width: 300px;
   position: absolute;
-  top:0;
+  top: 0;
 }
 
-.footer{
+.footer {
   clip-path: polygon(19% 0, 100% 0, 100% 100%, 0 100%);
   height: 55px;
   width: 720px;
-  position:fixed;
-  bottom:0;
+  position: fixed;
+  bottom: 0;
   right: 0;
-  background-color:#333;
+  background-color: #333;
 }
 
-.bottom-nav{
-
+.bottom-nav {
   display: flex;
   align-items: center;
   position: absolute;
@@ -72,7 +73,7 @@ nav{
   right: 0;
   height: 55px;
 }
-.bottom-nav-link{
+.bottom-nav-link {
   color: beige;
   text-decoration: none;
   height: 100%;
@@ -80,14 +81,13 @@ nav{
   align-items: center;
   padding: 0 20px;
 }
-.bottom-nav-link:hover{
+.bottom-nav-link:hover {
   background-color: black;
   color: red;
 }
 
-
 /* char css */
 
-.char-portrait{
+.char-portrait {
   max-width: 200px;
 }

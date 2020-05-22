@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-export default class Characters extends Component {
+export default class AdminCharacters extends Component {
 
     state = {
         allCharacters: []
@@ -25,6 +25,14 @@ export default class Characters extends Component {
         }
     }
 
+    onDeleteCharacter = async (characterId) => {
+        await axios.delete(`api/character/${characterId}`)
+        this.getAllCharacters()
+    }
+
+
+
+
     render() {
         return (
             <div>
@@ -39,6 +47,7 @@ export default class Characters extends Component {
                             </Link>
                             <div>Tier: {character.tierLetter}</div>
                             <div>{character.description}</div>
+                            <button onClick={() => this.onDeleteCharacter(character._id)}>Delete</button>
                         </div>
                     )
                 })}
