@@ -52,9 +52,7 @@ export default class TierList extends Component {
                     return(
                         <div className='tier'>
                             <div className='tier-letter'>{tier.tierLetter}</div>
-                            <div className='tier-characters'>
                                 <TierCharacters tierLetter={tier.tierLetter}/>
-                            </div>
                         </div>
                     )
                 })}

@@ -18,14 +18,12 @@ export default class TierCharacters extends Component {
             const res = await axios.get('/api/character')
             const newState = { ...this.state }
             const characters = res.data
-            console.log(this.props.tierLetter)
             newState.characters = characters.filter((char) => {
-                console.log(char,'char')
                 if(char.tierLetter === this.props.tierLetter){
                     return char
                 }
             })
-            console.log(newState.characters)
+
             this.setState(newState)
         } catch (err) {
             console.log('Failed to get chars by tier')
@@ -40,7 +38,7 @@ export default class TierCharacters extends Component {
                     return(
                     <div className='char'>
                         <Link to={`/character/${char._id}`}>
-                        <img className='char-portrait' src={char.portrait} alt={`${char.name}-melee`}/>
+                        <img className='char-portrait-tier' src={char.portrait} alt={`${char.name}-melee`}/>
                     <h3 className='tier-char-name'>{char.name}</h3>
                     </Link>
                     </div>

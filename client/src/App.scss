@@ -7,6 +7,8 @@ body {
   margin: 0;
 }
 
+$red-color: #a71010;
+
 a{
   outline: 0;
 }
@@ -45,7 +47,7 @@ nav {
   padding: 15px;
   &:hover {
     background-color: black;
-    color: red;
+    color: $red-color;
   }
 }
 
@@ -83,11 +85,64 @@ nav {
 }
 .bottom-nav-link:hover {
   background-color: black;
-  color: red;
+  color: $red-color;
 }
 
 /* char css */
 
 .char-portrait {
   max-width: 200px;
+}
+
+
+// Tier List
+
+.tier-list{
+  padding:50px 0 0 0;
+}
+
+.tier{
+  padding: 0px 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.tier-letter{
+  font-size: 80px;
+  color: $red-color;
+  padding: 0 30px 90px 0;
+}
+.character-tier{
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: start;
+  align-items: center;
+}
+
+.char{
+  max-width: 20%;
+  display: flex;
+  justify-items: center;
+  a{
+    text-decoration: none;
+  }
+}
+
+.tier-char-name{
+
+  color: #333;
+}
+
+.char-portrait-tier{
+  max-width: 150px;
+  background: linear-gradient(24deg, rgba(2,0,36,1) 0%, rgba(121,9,55,1) 72%, rgba(153,2,2,1) 100%);
+  padding: 5px;
+  border-radius: 12%;
+  &:hover{
+    transition-duration: 500ms;
+    transition: ease-in-out;
+    background: rgb(2,0,36);
+    background: linear-gradient(210deg, rgba(2,0,36,1) 0%, rgba(121,9,55,1) 72%, rgba(153,2,2,1) 100%); 
+  }
 }
