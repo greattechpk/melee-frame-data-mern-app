@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 export default class CreateCharacter extends Component {
@@ -22,7 +23,9 @@ export default class CreateCharacter extends Component {
         evt.preventDefault()
         try{
             await axios.post('api/character', this.state.newCharacter)
-            this.getAllCharacters()
+            const newState = {...this.state}
+            newState.redirect = true
+            this.setState(newState)
         } catch (err){
             console.log('Failed to create new character')
             console.log(err)
@@ -30,6 +33,9 @@ export default class CreateCharacter extends Component {
     }
 
     render() {
+        if (this.state.redirect) {
+            return (<Redirect to='/all-characters' />)
+        }
         return (
             <div>
                 <h1>Create a Character</h1>

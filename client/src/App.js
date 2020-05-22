@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import './App.css'
+import './App.scss'
 import Characters from './components/Characters.js'
 import SingleCharacter from './components/SingleCharacter.js'
 import TierList from './components/TierList'
