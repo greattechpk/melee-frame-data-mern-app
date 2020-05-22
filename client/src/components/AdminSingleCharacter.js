@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Redirect, Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import EditCharacter from './EditCharacter'
 
 export default class AdminSingleCharacter extends Component {

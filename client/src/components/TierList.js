@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import TierCharacters from './TierCharacters'
 
 export default class TierList extends Component {
 
@@ -30,11 +31,6 @@ export default class TierList extends Component {
         this.setState(newState)
     }
 
-    onDeleteTier = async (tierId) => {
-        await axios.delete(`api/tier/${tierId}`)
-        this.getAllTiers()
-    }
-
     onSubmit = async (evt) => {
         evt.preventDefault()
         try {
@@ -57,7 +53,7 @@ export default class TierList extends Component {
                         <div className='tier'>
                             <div className='tier-letter'>{tier.tierLetter}</div>
                             <div className='tier-characters'>
-                                Characters will go here.
+                                <TierCharacters tierLetter={tier.tierLetter}/>
                             </div>
                         </div>
                     )
