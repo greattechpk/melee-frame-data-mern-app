@@ -118,12 +118,13 @@ nav {
   flex-wrap: wrap;
   justify-items: start;
   align-items: center;
+  width: fit-content;
 }
 
 .char{
-  max-width: 20%;
   display: flex;
   justify-items: center;
+  padding: 0 10px;
   a{
     text-decoration: none;
   }
