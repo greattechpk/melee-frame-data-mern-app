@@ -14,7 +14,8 @@ export default class AdminSingleCharacter extends Component {
         },
         _id: '',
         updateView: false,
-        redirect: false
+        redirect: false,
+        tiers:[]
     }
 
     onDeleteCharacter = async (characterId) => {
@@ -27,6 +28,7 @@ export default class AdminSingleCharacter extends Component {
 
     componentDidMount() {
         this.getCharacterById()
+        this.getTierInfo()
     }
 
     getCharacterById = async () => {
@@ -39,6 +41,7 @@ export default class AdminSingleCharacter extends Component {
         this.setState(newState)
         console.log(this.state)
     }
+
     toggleUpdateView = async () => {
         const updateView = !this.state.updateView
         if (this.state.updateView === true) {
@@ -48,7 +51,7 @@ export default class AdminSingleCharacter extends Component {
                 console.log(this.state.character)
                 const passState = this.state.character
                 console.log(passState)
-                await axios.put(`/api/character/${characterId}`, passState).bind(this)
+                await axios.put(`/api/character/${characterId}`, passState)
             } catch (err) {
                 console.log('Put Err')
                 console.log(err)
@@ -62,6 +65,26 @@ export default class AdminSingleCharacter extends Component {
         const newState = { ...this.state }
         newState.character[evt.target.name] = evt.target.value
         this.setState(newState)
+    }
+
+    getTierInfo = async () =>{
+        try{
+            const res = await axios.get('/api/tier')
+            console.log(res.data)
+            const newState = {...this.state}
+            newState.tiers = res.data
+            this.setState(newState)
+        } catch (err){
+            console.log('Failed to get tier data')
+            console.log(err)
+        }
+    }
+
+    onSelectTier = (evt) => {
+        const newState = {...this.state}
+        newState.character.tierLetter = evt.target.value
+        this.setState(newState)
+        console.log(evt.target.value)
     }
 
     render() {
@@ -79,7 +102,7 @@ export default class AdminSingleCharacter extends Component {
                     <button onClick={() => this.onDeleteCharacter(this.state.character._id)}>Delete</button>
                     <button onClick={this.toggleUpdateView}>Edit</button>
                 </div>
-                {this.state.updateView ? <EditCharacter name={this.state.character.name} description={this.state.character.description} portrait={this.state.character.portrait} onChangeCharacter={this.onChangeCharacter} /> : null}
+                {this.state.updateView ? <EditCharacter name={this.state.character.name} description={this.state.character.description} portrait={this.state.character.portrait} onChangeCharacter={this.onChangeCharacter} getTierInfo={this.getTierInfo} tierLetter={this.state.character.tierLetter} tiers={this.state.tiers} onSelectTier={this.onSelectTier}/> : null}
             </div>
         )
     }

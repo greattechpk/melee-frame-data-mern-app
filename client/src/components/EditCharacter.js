@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 
 export default class editCharacter extends Component {
+    
     render() {
+        
         return (
             <div>
                 <form>
@@ -29,6 +31,14 @@ export default class editCharacter extends Component {
                             name="portrait"
                             value={this.props.portrait}
                             onChange={this.props.onChangeCharacter} />
+                    </div>
+                    <div>
+                        <label htmlFor="tierLetter">Tier Letter</label>
+                        <select name='tier' id='tier' onChange={this.props.onSelectTier} value={this.props.tierLetter}>
+                            {this.props.tiers.map((entry)=>{
+                               return(<option value={entry.tierLetter}>{entry.tierLetter}</option>) 
+                            })}
+                        </select>
                     </div>
                 </form>
             </div>
