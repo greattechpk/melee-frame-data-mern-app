@@ -18,15 +18,14 @@ const MoveSchema = new mongoose.Schema({
     gif:String,
     notes:String,
     type:String,
-    damage:Number,
     totalFrames:String,
     activeHit:String,
-    startUpFrames:Number,
-    endFrames:Number,
-    iasa:Number,
-    autoCancel:Number,
-    landLag:Number,
-    lCanceled:Number
+    startUpFrames:String,
+    endFrames:String,
+    iasa:String,
+    autoCancel:String,
+    landLag:String,
+    lCanceled:String
 })
 
 const MoveModel = mongoose.model('move', MoveSchema)
@@ -37,6 +36,10 @@ function getAllMoves() {
 
 function getMoveById(moveId) {
     return MoveModel.findById(moveId)
+}
+
+function getMovesByCharacterID(characterId){
+    return MoveModel.find({"characterId": characterId})
 }
 
 function create(moveData) {
@@ -56,6 +59,7 @@ function deleteMove(moveId) {
 module.exports = {
     getAllMoves,
     getMoveById,
+    getMovesByCharacterID,
     create,
     update,
     deleteMove

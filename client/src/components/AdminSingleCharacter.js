@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import EditCharacter from './EditCharacter'
+import CreateMove from './CreateMove'
 
 export default class AdminSingleCharacter extends Component {
 
@@ -14,16 +15,9 @@ export default class AdminSingleCharacter extends Component {
         },
         _id: '',
         updateView: false,
+        addMoveView: false,
         redirect: false,
-        tiers:[]
-    }
-
-    onDeleteCharacter = async (characterId) => {
-        console.log(this.state)
-        await axios.delete(`/api/character/${characterId}`)
-        const newState = { ...this.state }
-        newState.redirect = true
-        this.setState(newState)
+        tiers: []
     }
 
     componentDidMount() {
@@ -61,27 +55,32 @@ export default class AdminSingleCharacter extends Component {
         this.setState({ updateView: updateView })
     }
 
+    toggleAddMove = () => {
+        const addMoveView = !this.state.addMoveView
+        this.setState({ addMoveView: addMoveView })
+    }
+
     onChangeCharacter = (evt) => {
         const newState = { ...this.state }
         newState.character[evt.target.name] = evt.target.value
         this.setState(newState)
     }
 
-    getTierInfo = async () =>{
-        try{
+    getTierInfo = async () => {
+        try {
             const res = await axios.get('/api/tier')
             console.log(res.data)
-            const newState = {...this.state}
+            const newState = { ...this.state }
             newState.tiers = res.data
             this.setState(newState)
-        } catch (err){
+        } catch (err) {
             console.log('Failed to get tier data')
             console.log(err)
         }
     }
 
     onSelectTier = (evt) => {
-        const newState = {...this.state}
+        const newState = { ...this.state }
         newState.character.tierLetter = evt.target.value
         this.setState(newState)
         console.log(evt.target.value)
@@ -99,10 +98,27 @@ export default class AdminSingleCharacter extends Component {
                 <div><span>Description:</span> {this.state.character.description}</div>
                 <div><span>Tier:</span> {this.state.character.tierLetter}</div>
                 <div className='controls'>
-                    <button onClick={() => this.onDeleteCharacter(this.state.character._id)}>Delete</button>
+                    <button onClick={this.toggleAddMove}>Add Move</button>
                     <button onClick={this.toggleUpdateView}>Edit</button>
                 </div>
-                {this.state.updateView ? <EditCharacter name={this.state.character.name} description={this.state.character.description} portrait={this.state.character.portrait} onChangeCharacter={this.onChangeCharacter} getTierInfo={this.getTierInfo} tierLetter={this.state.character.tierLetter} tiers={this.state.tiers} onSelectTier={this.onSelectTier}/> : null}
+
+                {this.state.updateView ?
+                    <EditCharacter
+                        name={this.state.character.name}
+                        description={this.state.character.description}
+                        portrait={this.state.character.portrait}
+                        onChangeCharacter={this.onChangeCharacter}
+                        getTierInfo={this.getTierInfo}
+                        tierLetter={this.state.character.tierLetter}
+                        tiers={this.state.tiers}
+                        onSelectTier={this.onSelectTier} />
+                    : null}
+
+                {this.state.addMoveView ?
+                    <CreateMove
+                        name={this.state.character.name} 
+                        charId={this.state._id} />
+                    : null}
             </div>
         )
     }
