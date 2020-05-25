@@ -33,7 +33,7 @@ export default class CreateCharacter extends Component {
 
     onSelectTier = (evt) => {
         const newState = {...this.state}
-        newState.tierLetter = evt.target.value
+        newState.newCharacter.tierLetter = evt.target.value
         this.setState(newState)
         console.log(evt.target.value)
     }
@@ -48,6 +48,7 @@ export default class CreateCharacter extends Component {
         evt.preventDefault()
         try{
             await axios.post('api/character', this.state.newCharacter)
+            console.log( this.state.newCharacter)
             const newState = {...this.state}
             newState.redirect = true
             this.setState(newState)
