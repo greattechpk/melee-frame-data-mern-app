@@ -5,6 +5,8 @@ const express = require('express')
 
 const characterModel = require('../models/character.js')
 
+const moveModel = require('../models/move')
+
 const characterRouter = express.Router()
 
 /*

@@ -35,7 +35,6 @@ export default class AdminSingleCharacter extends Component {
     getMovesByCharacterID = async () =>{
         try{
             const res = await axios.get(`/api/move`)
-            console.log(res.data)
         }catch (err){
             console.log(err)
         }
@@ -124,7 +123,7 @@ export default class AdminSingleCharacter extends Component {
                         charId={this.state.character._id} />
                     : null}
 
-                <MoveListAdmin characterId={this.state.character._id}/>
+                <MoveListAdmin moves={this.state.character.moves}/>
             </div>
         )
     }

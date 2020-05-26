@@ -7,7 +7,6 @@ export default class CreateMove extends Component {
     state = {
         newMove: {
             name: '',
-            characterId: '',
             gif: '',
             notes: '',
             type: '',
@@ -49,7 +48,7 @@ export default class CreateMove extends Component {
             const newState = {...this.state}
             newState.redirect = true
             this.setState(newState)
-            await axios.post(`api/character/${this.props.charId}/moves`, this.state.newMove)
+            await axios.post(`/api/character/${this.props.charId}/moves`, this.state.newMove)
         } catch (err){
             console.log('Failed to create new move')
             console.log(err)
@@ -58,7 +57,7 @@ export default class CreateMove extends Component {
 
     render() {
         if (this.state.redirect) {
-            return (<Redirect to={`/admin-character/${this.state.characterId}`} />)
+            return (<Redirect to={`/admin-character/${this.props.charId}`} />)
         }
 
         return (
