@@ -35,6 +35,7 @@ a{
   width: 100%;
   align-items: center;
   justify-content: space-between;
+  z-index: 2;
 }
 nav {
   display: flex;
@@ -54,7 +55,11 @@ nav {
 .logo-img {
   max-width: 300px;
   position: absolute;
-  top: 0;
+  top: 10px;
+  left:10px;
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(10px 10px 10px rgb(0, 0, 0));
+  
 }
 
 .footer {
@@ -93,7 +98,45 @@ nav {
 .char-portrait {
   max-width: 200px;
 }
+.single-char-portrait{
+  max-width: 300px;
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(10px 10px 10px rgb(0, 0, 0));
+  z-index: 1;
+}
 
+.char-portrait-background{
+  background-color: $red-color;
+  border-radius: 50%;
+}
+.single-char-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.single-char-info{
+  text-align: left;
+  padding: 20px;
+  font-size: 20px;
+  font-weight:600;
+}
+
+.single-char-name-data{
+  font-size: 60px;
+  color:$red-color;
+}
+.single-char-description{
+  padding: 10px 0;
+}
+.single-char-description-data{
+  font-weight: 400;
+}
+.single-char-tier-data{
+  font-size: 60px;
+  color:$red-color;
+}
 
 // Tier List
 
@@ -187,18 +230,31 @@ nav {
 }
 
 .move-entry-data-notes{
-  color: rgb(175, 174, 174);
+  color: rgb(255, 255, 255);
   max-width: 300px;
 }
 
 .notes{
   display: flex;
-
   flex-direction: column;
   align-items: center;
   padding:0 0 10px 0;
 }
 
 .type-section{
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
+  justify-content: flex-start;
+}
+
+.type-title{
+  text-align: left;
+  padding-left: 40px;
+  font-size: 50px;
+}
+
+.move-gif{
+  border: 2px solid $red-color;
+  border-radius: 10px;
 }

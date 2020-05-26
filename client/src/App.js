@@ -19,7 +19,7 @@ function App() {
       <Router>
         <div className='navbar'>
           <div className='logo'>
-            <img className='logo-img' src='/img/meleehell.png' alt='' />
+            <img className='logo-img' src='/img/smash.png' alt='' />
           </div>
           <nav>
             <Link className='nav-link' to='/'>Home</Link>
