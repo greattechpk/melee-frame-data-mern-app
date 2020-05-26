@@ -62,5 +62,6 @@ module.exports = {
     getMovesByCharacterID,
     create,
     update,
-    deleteMove
+    deleteMove,
+    MoveModel
 }

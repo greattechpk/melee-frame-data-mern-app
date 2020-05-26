@@ -3,17 +3,12 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import EditCharacter from './EditCharacter'
 import CreateMove from './CreateMove'
+import MoveListAdmin from './MoveListAdmin'
 
 export default class AdminSingleCharacter extends Component {
 
     state = {
-        character: {
-            name: '',
-            description: '',
-            portrait: '',
-            tierLetter: ''
-        },
-        _id: '',
+        character: {},
         updateView: false,
         addMoveView: false,
         redirect: false,
@@ -23,6 +18,7 @@ export default class AdminSingleCharacter extends Component {
     componentDidMount() {
         this.getCharacterById()
         this.getTierInfo()
+        this.getMovesByCharacterID()
     }
 
     getCharacterById = async () => {
@@ -34,6 +30,15 @@ export default class AdminSingleCharacter extends Component {
         newState.character = res.data
         this.setState(newState)
         console.log(this.state)
+    }
+
+    getMovesByCharacterID = async () =>{
+        try{
+            const res = await axios.get(`/api/move`)
+            console.log(res.data)
+        }catch (err){
+            console.log(err)
+        }
     }
 
     toggleUpdateView = async () => {
@@ -69,7 +74,6 @@ export default class AdminSingleCharacter extends Component {
     getTierInfo = async () => {
         try {
             const res = await axios.get('/api/tier')
-            console.log(res.data)
             const newState = { ...this.state }
             newState.tiers = res.data
             this.setState(newState)
@@ -117,8 +121,10 @@ export default class AdminSingleCharacter extends Component {
                 {this.state.addMoveView ?
                     <CreateMove
                         name={this.state.character.name} 
-                        charId={this.state._id} />
+                        charId={this.state.character._id} />
                     : null}
+
+                <MoveListAdmin characterId={this.state.character._id}/>
             </div>
         )
     }

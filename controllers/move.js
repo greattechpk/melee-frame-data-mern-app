@@ -13,7 +13,7 @@ const moveRouter = express.Router()
  */
 
  // GET ALL ROUTE
-moveRouter.get('/', async (req, res) => {
+moveRouter.get('/character/:characterId/moves', async (req, res) => {
   try {
       const allMoves = await moveModel.getAllMoves()
       res.json(allMoves)
@@ -24,7 +24,7 @@ moveRouter.get('/', async (req, res) => {
 })
  
 // GET ONE
-moveRouter.get('/:moveId', async (req, res) => {
+moveRouter.get('/character/:characterId/moves/:moveId', async (req, res) => {
   try {
       const move = await moveModel.getMoveById(req.params.moveId)
       res.json(move)
@@ -34,10 +34,21 @@ moveRouter.get('/:moveId', async (req, res) => {
   }
 })
 
+// GET BY CHARACTER ID
+moveRouter.get(`/character/:characterId/moves/:moveId`, async (req, res) =>{
+  try{
+    const movesByChar = await moveModel.getMovesByCharacterID(req.params.characterId)
+    res.json(movesByChar) 
+  } catch (error){
+    res.statusCode(500).json(error)
+      console.log(error)
+  }
+})
+
 // CREATE
-moveRouter.post('/', async (req, res) => {
+moveRouter.post('/character/:characterId/moves', async (req, res) => {
   try {
-      await moveModel.create(req.body)
+      await moveModel.create(characterId,req.body)
       res.json('ok')
   } catch (error) {
       res.statusCode(500).json(error)
@@ -46,7 +57,7 @@ moveRouter.post('/', async (req, res) => {
 })
 
 // UPDATE
-moveRouter.put('/:moveId', async (req, res) => {
+moveRouter.put('/character/:characterId/moves/:moveId', async (req, res) => {
   try {
     console.log(req.body)
       await moveModel.update(req.params.moveId, req.body)
@@ -59,7 +70,7 @@ moveRouter.put('/:moveId', async (req, res) => {
 
 
 // DELETE
-moveRouter.delete('/:moveId', async (req, res) => {
+moveRouter.delete('/character/:characterId/moves/:moveId', async (req, res) => {
   try {
       await moveModel.deleteMove(req.params.moveId)
       res.json("ok")

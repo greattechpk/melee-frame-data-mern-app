@@ -7,7 +7,7 @@ export default class CreateMove extends Component {
     state = {
         newMove: {
             name: '',
-            characterId: this.props.characterId,
+            characterId: '',
             gif: '',
             notes: '',
             type: '',
@@ -24,6 +24,10 @@ export default class CreateMove extends Component {
         redirect:false
     }
 
+    componentDidMount(){
+        console.log(this.props.charId)
+    }
+
     onSelectType = (evt) =>{
         const newState = {...this.state}
         newState.newMove.type = evt.target.value
@@ -33,6 +37,7 @@ export default class CreateMove extends Component {
     onChangeText = evt =>{
         const newState = {...this.state}
         newState.newMove[evt.target.name]=evt.target.value
+        console.log(this.props.charId)
         this.setState(newState)
         console.log(this.state.newMove[evt.target.name])
     }
@@ -40,13 +45,13 @@ export default class CreateMove extends Component {
     onSubmit = async (evt) => {
         evt.preventDefault()
         try{
-            await axios.post('api/move', this.state.newMove)
             console.log( this.state.newMove)
             const newState = {...this.state}
             newState.redirect = true
             this.setState(newState)
+            await axios.post(`api/character/${this.props.charId}/moves`, this.state.newMove)
         } catch (err){
-            console.log('Failed to create new character')
+            console.log('Failed to create new move')
             console.log(err)
         }
     }
@@ -55,6 +60,7 @@ export default class CreateMove extends Component {
         if (this.state.redirect) {
             return (<Redirect to={`/admin-character/${this.state.characterId}`} />)
         }
+
         return (
             <div>
                 <h2>Create a move for {this.props.name}</h2>
