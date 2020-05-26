@@ -13,10 +13,10 @@ As of right now the project is deployed to heroku and will have example data wit
 A user is able to view a gif for most moves and is recommended to be hosted on imgur.
 
 ### Technologies Used:
--ReactJS
--Node
--MongoDB
--Express
--Axios
--Sass
+* ReactJS
+* Node
+* MongoDB
+* Express
+* Axios
+* Sass
 
