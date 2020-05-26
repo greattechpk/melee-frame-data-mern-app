@@ -77,6 +77,13 @@ export default class AdminSingleCharacter extends Component {
         }
     }
 
+    onDeleteMove = async (moveId) => {
+        console.log(this.state.character._id)
+        console.log(moveId)
+        await axios.delete(`/api/character/${this.state.character._id}/moves/${moveId}`)
+        this.getCharacterById()
+    }
+
     onSelectTier = (evt) => {
         const newState = { ...this.state }
         newState.character.tierLetter = evt.target.value
@@ -118,7 +125,7 @@ export default class AdminSingleCharacter extends Component {
                         charId={this.state.character._id} />
                     : null}
 
-                <MoveListAdmin moves={this.state.character.moves} />
+                <MoveListAdmin moves={this.state.character.moves} onDeleteMove={this.onDeleteMove} />
             </div>
         )
     }
