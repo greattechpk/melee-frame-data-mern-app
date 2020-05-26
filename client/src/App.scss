@@ -15,6 +15,7 @@ a{
 
 .content {
   margin: 0 auto;
+  padding-bottom: 80px;
   width: 80%;
   background-color: rgba(255, 255, 255, 0.8);
   min-height: 100vh;
@@ -145,4 +146,38 @@ nav {
     background: rgb(2,0,36);
     background: linear-gradient(210deg, rgba(2,0,36,1) 0%, rgba(121,9,55,1) 72%, rgba(153,2,2,1) 100%); 
   }
+}
+
+//move data
+
+.move-list{
+  display: flex;
+}
+
+.move{
+  background-color: rgba(0, 0, 0, 0.507);
+  margin: 20px;
+  padding: 15px;
+  border-radius: 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.move-title{
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.move-entry{
+  padding: 3px;
+}
+
+.move-entry-name{
+  font-weight: 600;
+}
+
+.move-entry-data{
+  color: rgb(255, 255, 255);
 }

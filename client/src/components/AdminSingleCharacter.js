@@ -8,7 +8,10 @@ import MoveListAdmin from './MoveListAdmin'
 export default class AdminSingleCharacter extends Component {
 
     state = {
-        character: {},
+        character: {
+            moves:[],
+            _id:''
+        },
         updateView: false,
         addMoveView: false,
         redirect: false,
@@ -18,7 +21,6 @@ export default class AdminSingleCharacter extends Component {
     componentDidMount() {
         this.getCharacterById()
         this.getTierInfo()
-        this.getMovesByCharacterID()
     }
 
     getCharacterById = async () => {
@@ -32,13 +34,6 @@ export default class AdminSingleCharacter extends Component {
         console.log(this.state)
     }
 
-    getMovesByCharacterID = async () =>{
-        try{
-            const res = await axios.get(`/api/move`)
-        }catch (err){
-            console.log(err)
-        }
-    }
 
     toggleUpdateView = async () => {
         const updateView = !this.state.updateView
@@ -123,7 +118,7 @@ export default class AdminSingleCharacter extends Component {
                         charId={this.state.character._id} />
                     : null}
 
-                <MoveListAdmin moves={this.state.character.moves}/>
+                <MoveListAdmin moves={this.state.character.moves} />
             </div>
         )
     }
