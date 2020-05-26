@@ -19,8 +19,9 @@ A user is able to view a gif for most moves and is recommended to be hosted on i
 * Express
 * Axios
 * Sass
+
 ### WireFrame Images
-![Wireframe] (/Planning Files/WireFrame.jpg)
+![Wireframe](https://raw.githubusercontent.com/greattechpk/melee-frame-data-mern-app/master/Planning%20Files/Wireframe.jpg)
 
 ### Erd
-![ERD] (/Planning Files/meleeERD.png)
+![ERD](https://raw.githubusercontent.com/greattechpk/melee-frame-data-mern-app/master/Planning%20Files/meleeERD.png)
