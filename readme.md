@@ -20,6 +20,9 @@ A user is able to view a gif for most moves and is recommended to be hosted on i
 * Axios
 * Sass
 
+[Go here for the Heroku Hosted Version Online](https://ssbm-frame-data.herokuapp.com/)
+[Link to Project Board](https://github.com/greattechpk/melee-frame-data-mern-app/projects/1)
+
 ### WireFrame Images
 ![Wireframe](https://raw.githubusercontent.com/greattechpk/melee-frame-data-mern-app/master/Planning%20Files/Wireframe.jpg)
 
